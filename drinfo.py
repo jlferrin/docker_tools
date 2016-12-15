@@ -31,7 +31,8 @@ def get_respuesta(url):
 	try:
 		respuesta = requests.get(url)
 		if respuesta.status_code != 200:
-			raise ApiError('Error: GET {} {}'.format(url,respuesta.status_code))
+			print('Error: GET {} {}'.format(url,respuesta.status_code))
+			sys.exit(2)
 		json_obj = respuesta.json() 
 		return json_obj
 	except requests.exceptions.RequestException as err:
